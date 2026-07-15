@@ -19,14 +19,14 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 1,
     render: ([item]) => (
-      <section key="hero" data-section className="pt-[18vh]">
+      <section key="hero" className="pt-[18vh]">
         <MemoryPhoto
           src={item.src}
           alt={item.alt ?? ''}
           caption={item.caption}
           rotate={-1}
           priority
-          className="mx-auto w-full max-w-2xl"
+          className="mx-auto w-full max-w-lg"
         />
       </section>
     ),
@@ -35,7 +35,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 2,
     render: (items) => (
-      <section key={`pair-v-${items[0].src}`} data-section className="mt-[16vh] flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-center sm:gap-10">
+      <section key={`pair-v-${items[0].src}`} data-section="scroll" className="mt-[16vh] flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-center sm:gap-10">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -57,7 +57,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 2,
     render: (items) => (
-      <section key={`large-${items[0].src}`} data-section className="relative mt-[16vh]">
+      <section key={`large-${items[0].src}`} data-section="scroll" className="relative mt-[16vh]">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -79,7 +79,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 3,
     render: (items) => (
-      <section key={`trio-${items[0].src}`} data-section className="mt-[20vh] grid grid-cols-2 items-start gap-6 sm:grid-cols-12 sm:gap-8">
+      <section key={`trio-${items[0].src}`} data-section="scroll" className="mt-[20vh] grid grid-cols-2 items-start gap-6 sm:grid-cols-12 sm:gap-8">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -108,7 +108,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 1,
     render: ([item]) => (
-      <section key={`center-${item.src}`} data-section className="mt-[20vh]">
+      <section key={`center-${item.src}`} data-section="scroll" className="mt-[20vh]">
         <MemoryPhoto
           src={item.src}
           alt={item.alt ?? ''}
@@ -123,7 +123,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 4,
     render: (items) => (
-      <section key={`grid-${items[0].src}`} data-section className="mt-[18vh] grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
+      <section key={`grid-${items[0].src}`} data-section="scroll" className="mt-[18vh] grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -159,7 +159,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 3,
     render: (items) => (
-      <section key={`stacked-${items[0].src}`} data-section className="mt-[20vh] flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-center sm:gap-10">
+      <section key={`stacked-${items[0].src}`} data-section="scroll" className="mt-[20vh] flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-center sm:gap-10">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -190,7 +190,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 2,
     render: (items) => (
-      <section key={`pair-h-${items[0].src}`} data-section className="mt-[20vh] grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10">
+      <section key={`pair-h-${items[0].src}`} data-section="scroll" className="mt-[20vh] grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -245,7 +245,7 @@ export function Collage() {
       const container = collageRef.current
       if (!container) return
 
-      const sectionEls = gsap.utils.toArray<Element>('[data-section]', container)
+      const sectionEls = gsap.utils.toArray<Element>('[data-section="scroll"]', container)
       sectionEls.forEach((section) => {
         const items = gsap.utils.toArray<Element>('[data-media-item]', section)
         if (items.length === 0) return
