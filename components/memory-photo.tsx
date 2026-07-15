@@ -72,31 +72,31 @@ export function MemoryPhoto({
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
         style={{ transform: `rotate(${rotate}deg)` } as CSSProperties}
-        className="group relative overflow-hidden rounded-2xl bg-white/[0.02] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)] ring-1 ring-white/5 will-change-transform"
-      >
-        {isVideo(src) ? (
-          <video
-            ref={mediaRef as React.RefObject<HTMLVideoElement>}
-            src={src}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label={alt}
-            className="w-full align-middle"
-          />
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            ref={mediaRef as React.RefObject<HTMLImageElement>}
-            src={src || '/placeholder.svg'}
-            alt={alt}
-            loading={priority ? 'eager' : 'lazy'}
-            className="w-full align-middle"
-            crossOrigin="anonymous"
-          />
-        )}
+        className="group relative flex max-h-[80vh] w-full items-center justify-center overflow-hidden rounded-2xl bg-white/[0.02] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)] ring-1 ring-white/5 will-change-transform"
+        >
+          {isVideo(src) ? (
+            <video
+              ref={mediaRef as React.RefObject<HTMLVideoElement>}
+              src={src}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label={alt}
+              className="h-full w-full object-contain"
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              ref={mediaRef as React.RefObject<HTMLImageElement>}
+              src={src || '/placeholder.svg'}
+              alt={alt}
+              loading={priority ? 'eager' : 'lazy'}
+              className="h-full w-full object-contain"
+              crossOrigin="anonymous"
+            />
+          )}
       </div>
       {caption && (
         <p className="mt-2 max-w-xs text-balance text-center font-serif text-xs italic leading-relaxed text-white/45 sm:mt-3 sm:max-w-md sm:text-sm">

@@ -252,12 +252,12 @@ export function Collage() {
 
         gsap.fromTo(
           items,
-          { autoAlpha: 0, y: 48, scale: 0.95 },
+          { autoAlpha: 0, y: 60, scale: 0.92 },
           {
             autoAlpha: 1,
             y: 0,
             scale: 1,
-            duration: 1.2,
+            duration: 1.3,
             ease: 'power3.out',
             stagger: items.length > 1 ? 0.15 : 0,
             scrollTrigger: {
