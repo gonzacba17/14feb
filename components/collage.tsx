@@ -19,7 +19,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 1,
     render: ([item]) => (
-      <section key={`hero-${item.src}`} className="flex min-h-[50vh] flex-col items-center justify-center px-6 sm:min-h-screen">
+      <section key={`hero-${item.src}`} className="flex min-h-[40vh] flex-col items-center justify-center px-4 sm:min-h-screen">
         <MemoryPhoto
           src={item.src}
           alt={item.alt ?? ''}
@@ -35,7 +35,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 2,
     render: (items) => (
-      <section key={`pair-v-${items[0].src}`} data-section="scroll" className="mt-[8vh] flex flex-col items-center gap-8 sm:mt-[16vh] sm:flex-row sm:items-start sm:justify-center sm:gap-10">
+      <section key={`pair-v-${items[0].src}`} data-section="scroll" className="mt-[8vh] flex flex-col items-center gap-4 sm:mt-[16vh] sm:flex-row sm:items-start sm:justify-center sm:gap-10">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -70,7 +70,7 @@ const LAYOUTS: LayoutPattern[] = [
           alt={items[1].alt ?? ''}
           caption={items[1].caption}
           rotate={2}
-          className="relative mt-6 w-40 sm:absolute sm:-bottom-14 sm:left-0 sm:mt-0 sm:w-56 md:-bottom-20 md:w-64"
+          className="relative mt-4 w-44 sm:absolute sm:-bottom-14 sm:left-0 sm:mt-0 sm:w-56 md:-bottom-20 md:w-64"
         />
       </section>
     ),
@@ -79,7 +79,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 3,
     render: (items) => (
-      <section key={`trio-${items[0].src}`} data-section="scroll" className="mt-[20vh] grid grid-cols-2 items-start gap-6 sm:grid-cols-12 sm:gap-8">
+      <section key={`trio-${items[0].src}`} data-section="scroll" className="mt-[10vh] grid grid-cols-2 items-start gap-4 sm:mt-[20vh] sm:grid-cols-12 sm:gap-8">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -108,7 +108,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 1,
     render: ([item]) => (
-      <section key={`center-${item.src}`} data-section="scroll" className="mt-[20vh]">
+      <section key={`center-${item.src}`} data-section="scroll" className="mt-[10vh] sm:mt-[20vh]">
         <MemoryPhoto
           src={item.src}
           alt={item.alt ?? ''}
@@ -123,7 +123,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 4,
     render: (items) => (
-      <section key={`grid-${items[0].src}`} data-section="scroll" className="mt-[18vh] grid grid-cols-2 gap-8 sm:grid-cols-2 sm:gap-12">
+      <section key={`grid-${items[0].src}`} data-section="scroll" className="mt-[10vh] grid grid-cols-2 gap-4 sm:mt-[18vh] sm:grid-cols-2 sm:gap-12">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -159,7 +159,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 3,
     render: (items) => (
-      <section key={`stacked-${items[0].src}`} data-section="scroll" className="mt-[20vh] flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-center sm:gap-10">
+      <section key={`stacked-${items[0].src}`} data-section="scroll" className="mt-[10vh] flex flex-col items-center gap-6 sm:mt-[20vh] sm:flex-row sm:items-start sm:justify-center sm:gap-10">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -167,7 +167,7 @@ const LAYOUTS: LayoutPattern[] = [
           rotate={1}
           className="w-full max-w-sm"
         />
-        <div className="flex w-full max-w-xs flex-col gap-8 sm:mt-20">
+        <div className="flex w-full flex-col gap-6 sm:max-w-xs sm:gap-8 sm:mt-20">
           <MemoryPhoto
             src={items[1].src}
             alt={items[1].alt ?? ''}
@@ -190,7 +190,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 2,
     render: (items) => (
-      <section key={`pair-h-${items[0].src}`} data-section="scroll" className="mt-[20vh] grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10">
+      <section key={`pair-h-${items[0].src}`} data-section="scroll" className="mt-[10vh] grid grid-cols-1 gap-6 sm:mt-[20vh] sm:grid-cols-2 sm:gap-10">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -284,7 +284,7 @@ export function Collage() {
     <div ref={collageRef} className="mx-auto w-full max-w-7xl px-6 pb-40 sm:px-10">
       {sections}
 
-      <section className="mt-[22vh] flex flex-col items-center text-center">
+      <section className="mt-[12vh] flex flex-col items-center text-center sm:mt-[22vh]">
         <p className="font-serif text-4xl leading-tight text-white/80 text-balance sm:text-5xl">
           y todavía queda
           <br />
