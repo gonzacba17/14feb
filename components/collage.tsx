@@ -15,18 +15,18 @@ type LayoutPattern = {
 }
 
 const LAYOUTS: LayoutPattern[] = [
-  // 0 — hero
+  // 0 — hero (full first viewport)
   {
     count: 1,
     render: ([item]) => (
-      <section key={`hero-${item.src}`} className="pt-[12vh] sm:pt-[18vh]">
+      <section key={`hero-${item.src}`} className="flex min-h-[50vh] flex-col items-center justify-center px-6 sm:min-h-screen">
         <MemoryPhoto
           src={item.src}
           alt={item.alt ?? ''}
           caption={item.caption}
           rotate={-1}
           priority
-          className="mx-auto w-full max-w-lg"
+          className="w-full max-w-sm sm:max-w-4xl"
         />
       </section>
     ),
@@ -35,7 +35,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 2,
     render: (items) => (
-      <section key={`pair-v-${items[0].src}`} data-section="scroll" className="mt-[16vh] flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-center sm:gap-10">
+      <section key={`pair-v-${items[0].src}`} data-section="scroll" className="mt-[8vh] flex flex-col items-center gap-8 sm:mt-[16vh] sm:flex-row sm:items-start sm:justify-center sm:gap-10">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -57,7 +57,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 2,
     render: (items) => (
-      <section key={`large-${items[0].src}`} data-section="scroll" className="relative mt-[16vh]">
+      <section key={`large-${items[0].src}`} data-section="scroll" className="relative mt-[8vh] sm:mt-[16vh]">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -250,23 +250,39 @@ export function Collage() {
         const items = gsap.utils.toArray<Element>('[data-media-item]', section)
         if (items.length === 0) return
 
+        const staggerVal = items.length > 1 ? 0.18 : 0
+
         gsap.fromTo(
           items,
-          { autoAlpha: 0, y: 80, scale: 0.85 },
+          { autoAlpha: 0, y: 60, scale: 0.9 },
           {
             autoAlpha: 1,
             y: 0,
             scale: 1,
             ease: 'power2.out',
-            stagger: items.length > 1 ? 0.18 : 0,
+            stagger: staggerVal,
             scrollTrigger: {
               trigger: section,
-              start: 'top 85%',
-              end: 'top 25%',
-              scrub: 1,
+              start: 'top 90%',
+              end: 'top 10%',
+              scrub: 1.2,
             },
           },
         )
+
+        gsap.to(items, {
+          autoAlpha: 0,
+          y: -50,
+          scale: 0.95,
+          ease: 'power2.in',
+          stagger: staggerVal,
+          scrollTrigger: {
+            trigger: section,
+            start: 'bottom 75%',
+            end: 'bottom 15%',
+            scrub: 1.2,
+          },
+        })
       })
     },
     { scope: collageRef, dependencies: [MEDIA.length] },
