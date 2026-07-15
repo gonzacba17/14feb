@@ -19,7 +19,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 1,
     render: ([item]) => (
-      <section key="hero" className="pt-[18vh]">
+      <section key="hero" className="pt-[12vh] sm:pt-[18vh]">
         <MemoryPhoto
           src={item.src}
           alt={item.alt ?? ''}
@@ -70,7 +70,7 @@ const LAYOUTS: LayoutPattern[] = [
           alt={items[1].alt ?? ''}
           caption={items[1].caption}
           rotate={2}
-          className="absolute -bottom-14 left-0 w-40 sm:w-56 md:-bottom-20 md:w-64"
+          className="relative mt-6 w-40 sm:absolute sm:-bottom-14 sm:left-0 sm:mt-0 sm:w-56 md:-bottom-20 md:w-64"
         />
       </section>
     ),
@@ -99,7 +99,7 @@ const LAYOUTS: LayoutPattern[] = [
           alt={items[2].alt ?? ''}
           caption={items[2].caption}
           rotate={1.5}
-          className="col-span-2 mx-auto w-2/3 sm:col-span-3 sm:mt-40 sm:w-full"
+          className="col-span-2 mx-auto w-full sm:col-span-3 sm:mt-40 sm:w-full"
         />
       </section>
     ),

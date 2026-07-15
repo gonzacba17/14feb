@@ -99,7 +99,7 @@ export function MemoryPhoto({
         )}
       </div>
       {caption && (
-        <p className="mt-3 max-w-md text-balance text-center font-serif text-sm italic leading-relaxed text-white/45">
+        <p className="mt-2 max-w-xs text-balance text-center font-serif text-xs italic leading-relaxed text-white/45 sm:mt-3 sm:max-w-md sm:text-sm">
           {caption}
         </p>
       )}
