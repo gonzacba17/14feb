@@ -10,6 +10,8 @@ type MemoryPhotoProps = {
   className?: string
   rotate?: number
   priority?: boolean
+  frameless?: boolean
+  noHeightCap?: boolean
 }
 
 const isVideo = (src: string) => /\.(mp4|webm|mov|ogg)$/i.test(src)
@@ -21,6 +23,8 @@ export function MemoryPhoto({
   className = '',
   rotate = 0,
   priority = false,
+  frameless = false,
+  noHeightCap = false,
 }: MemoryPhotoProps) {
   const frameRef = useRef<HTMLDivElement>(null)
   const mediaRef = useRef<HTMLVideoElement | HTMLImageElement>(null)
@@ -45,7 +49,11 @@ export function MemoryPhoto({
     return () => observer.disconnect()
   }, [src])
 
+  const frameClass = `group relative w-full overflow-hidden ${frameless ? '' : 'rounded-2xl bg-white/[0.02] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)] ring-1 ring-white/5 will-change-transform'}`
+  const mediaClass = `w-full object-cover ${noHeightCap ? '' : 'max-h-[90vh]'}`
+
   const handleEnter = () => {
+    if (frameless) return
     gsap.to(mediaRef.current, { scale: 1.03, duration: 0.7, ease: 'power2.out' })
     gsap.to(frameRef.current, {
       rotate: 0,
@@ -56,6 +64,7 @@ export function MemoryPhoto({
   }
 
   const handleLeave = () => {
+    if (frameless) return
     gsap.to(mediaRef.current, { scale: 1, duration: 0.7, ease: 'power2.out' })
     gsap.to(frameRef.current, {
       rotate,
@@ -69,10 +78,10 @@ export function MemoryPhoto({
     <div data-media-item className={`flex flex-col items-center ${className}`}>
       <div
         ref={frameRef}
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
-        style={{ transform: `rotate(${rotate}deg)` } as CSSProperties}
-        className="group relative w-full overflow-hidden rounded-2xl bg-white/[0.02] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)] ring-1 ring-white/5 will-change-transform"
+        onMouseEnter={frameless ? undefined : handleEnter}
+        onMouseLeave={frameless ? undefined : handleLeave}
+        style={frameless ? undefined : ({ transform: `rotate(${rotate}deg)` } as CSSProperties)}
+        className={frameClass}
         >
           {isVideo(src) ? (
             <video
@@ -84,7 +93,7 @@ export function MemoryPhoto({
               playsInline
               preload="metadata"
               aria-label={alt}
-              className="max-h-[80vh] w-full object-contain"
+              className={mediaClass}
             />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
@@ -93,7 +102,7 @@ export function MemoryPhoto({
               src={src || '/placeholder.svg'}
               alt={alt}
               loading={priority ? 'eager' : 'lazy'}
-              className="max-h-[80vh] w-full object-contain"
+              className={mediaClass}
               crossOrigin="anonymous"
             />
           )}

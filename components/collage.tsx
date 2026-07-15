@@ -19,7 +19,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 1,
     render: ([item]) => (
-      <section key="hero" className="pt-[12vh] sm:pt-[18vh]">
+      <section key={`hero-${item.src}`} className="pt-[12vh] sm:pt-[18vh]">
         <MemoryPhoto
           src={item.src}
           alt={item.alt ?? ''}
@@ -41,7 +41,7 @@ const LAYOUTS: LayoutPattern[] = [
           alt={items[0].alt ?? ''}
           caption={items[0].caption}
           rotate={1.5}
-          className="w-full max-w-md sm:mt-16"
+          className="w-full max-w-lg sm:mt-16"
         />
         <MemoryPhoto
           src={items[1].src}

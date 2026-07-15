@@ -3,6 +3,7 @@ export interface MediaItem {
   src: string
   alt?: string
   caption?: string
+  frameless?: boolean
 }
 
 export const MEDIA: MediaItem[] = [
