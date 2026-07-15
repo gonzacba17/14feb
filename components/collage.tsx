@@ -250,37 +250,19 @@ export function Collage() {
         const items = gsap.utils.toArray<Element>('[data-media-item]', section)
         if (items.length === 0) return
 
-        const staggerVal = items.length > 1 ? 0.18 : 0
+        const staggerVal = items.length > 1 ? 0.15 : 0
 
-        gsap.fromTo(
-          items,
-          { autoAlpha: 0, y: 60, scale: 0.9 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            ease: 'power2.out',
-            stagger: staggerVal,
-            scrollTrigger: {
-              trigger: section,
-              start: 'top 90%',
-              end: 'top 10%',
-              scrub: 1.2,
-            },
-          },
-        )
-
-        gsap.to(items, {
+        gsap.from(items, {
           autoAlpha: 0,
-          y: -50,
-          scale: 0.95,
-          ease: 'power2.in',
+          y: 30,
+          scale: 0.93,
+          duration: 1.3,
+          ease: 'power3.out',
           stagger: staggerVal,
           scrollTrigger: {
             trigger: section,
-            start: 'bottom 75%',
-            end: 'bottom 15%',
-            scrub: 1.2,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
           },
         })
       })
