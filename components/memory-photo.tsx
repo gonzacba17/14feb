@@ -72,7 +72,7 @@ export function MemoryPhoto({
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
         style={{ transform: `rotate(${rotate}deg)` } as CSSProperties}
-        className="group relative flex max-h-[80vh] w-full items-center justify-center overflow-hidden rounded-2xl bg-white/[0.02] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)] ring-1 ring-white/5 will-change-transform"
+        className="group relative w-full overflow-hidden rounded-2xl bg-white/[0.02] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)] ring-1 ring-white/5 will-change-transform"
         >
           {isVideo(src) ? (
             <video
@@ -84,7 +84,7 @@ export function MemoryPhoto({
               playsInline
               preload="metadata"
               aria-label={alt}
-              className="h-full w-full object-contain"
+              className="max-h-[80vh] w-full object-contain"
             />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
@@ -93,7 +93,7 @@ export function MemoryPhoto({
               src={src || '/placeholder.svg'}
               alt={alt}
               loading={priority ? 'eager' : 'lazy'}
-              className="h-full w-full object-contain"
+              className="max-h-[80vh] w-full object-contain"
               crossOrigin="anonymous"
             />
           )}

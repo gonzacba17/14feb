@@ -41,7 +41,7 @@ const LAYOUTS: LayoutPattern[] = [
           alt={items[0].alt ?? ''}
           caption={items[0].caption}
           rotate={1.5}
-          className="w-full max-w-xs sm:mt-16"
+          className="w-full max-w-md sm:mt-16"
         />
         <MemoryPhoto
           src={items[1].src}
@@ -85,14 +85,14 @@ const LAYOUTS: LayoutPattern[] = [
           alt={items[0].alt ?? ''}
           caption={items[0].caption}
           rotate={1}
-          className="col-span-1 w-full sm:col-span-4 sm:mt-24"
+          className="col-span-1 w-full sm:col-span-3 sm:mt-32"
         />
         <MemoryPhoto
           src={items[1].src}
           alt={items[1].alt ?? ''}
           caption={items[1].caption}
           rotate={-1.5}
-          className="col-span-1 w-full sm:col-span-5"
+          className="col-span-1 w-full sm:col-span-6"
         />
         <MemoryPhoto
           src={items[2].src}
@@ -114,7 +114,7 @@ const LAYOUTS: LayoutPattern[] = [
           alt={item.alt ?? ''}
           caption={item.caption}
           rotate={-1}
-          className="mx-auto w-full max-w-4xl"
+          className="mx-auto w-full max-w-5xl"
         />
       </section>
     ),
@@ -123,7 +123,7 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 4,
     render: (items) => (
-      <section key={`grid-${items[0].src}`} data-section="scroll" className="mt-[18vh] grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
+      <section key={`grid-${items[0].src}`} data-section="scroll" className="mt-[18vh] grid grid-cols-2 gap-8 sm:grid-cols-2 sm:gap-12">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
@@ -136,7 +136,7 @@ const LAYOUTS: LayoutPattern[] = [
           alt={items[1].alt ?? ''}
           caption={items[1].caption}
           rotate={1}
-          className="w-full sm:mt-14"
+          className="w-full sm:mt-20"
         />
         <MemoryPhoto
           src={items[2].src}
@@ -150,7 +150,7 @@ const LAYOUTS: LayoutPattern[] = [
           alt={items[3].alt ?? ''}
           caption={items[3].caption}
           rotate={-1.5}
-          className="w-full sm:mt-14"
+          className="w-full sm:mt-20"
         />
       </section>
     ),
@@ -252,18 +252,18 @@ export function Collage() {
 
         gsap.fromTo(
           items,
-          { autoAlpha: 0, y: 60, scale: 0.92 },
+          { autoAlpha: 0, y: 80, scale: 0.85 },
           {
             autoAlpha: 1,
             y: 0,
             scale: 1,
-            duration: 1.3,
-            ease: 'power3.out',
-            stagger: items.length > 1 ? 0.15 : 0,
+            ease: 'power2.out',
+            stagger: items.length > 1 ? 0.18 : 0,
             scrollTrigger: {
               trigger: section,
-              start: 'top 88%',
-              toggleActions: 'play none none none',
+              start: 'top 85%',
+              end: 'top 25%',
+              scrub: 1,
             },
           },
         )
@@ -283,7 +283,7 @@ export function Collage() {
   }
 
   return (
-    <div ref={collageRef} className="mx-auto w-full max-w-6xl px-6 pb-40 sm:px-10">
+    <div ref={collageRef} className="mx-auto w-full max-w-7xl px-6 pb-40 sm:px-10">
       {sections}
 
       <section className="mt-[22vh] flex flex-col items-center text-center">
