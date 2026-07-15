@@ -79,27 +79,27 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 3,
     render: (items) => (
-      <section key={`trio-${items[0].src}`} data-section="scroll" className="mt-[10vh] grid grid-cols-2 items-start gap-4 sm:mt-[20vh] sm:grid-cols-12 sm:gap-8">
+      <section key={`trio-${items[0].src}`} data-section="scroll" className="mt-[10vh] flex flex-col items-center gap-6 sm:mt-[20vh] sm:grid sm:grid-cols-12 sm:items-start sm:gap-8">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
           caption={items[0].caption}
           rotate={1}
-          className="col-span-1 w-full sm:col-span-3 sm:mt-32"
+          className="w-full max-w-sm sm:col-span-3 sm:mt-32 sm:max-w-none"
         />
         <MemoryPhoto
           src={items[1].src}
           alt={items[1].alt ?? ''}
           caption={items[1].caption}
           rotate={-1.5}
-          className="col-span-1 w-full sm:col-span-6"
+          className="w-full max-w-sm sm:col-span-6 sm:max-w-none"
         />
         <MemoryPhoto
           src={items[2].src}
           alt={items[2].alt ?? ''}
           caption={items[2].caption}
           rotate={1.5}
-          className="col-span-2 mx-auto w-full sm:col-span-3 sm:mt-40 sm:w-full"
+          className="w-full max-w-sm sm:col-span-3 sm:mt-40 sm:max-w-none"
         />
       </section>
     ),
@@ -123,34 +123,34 @@ const LAYOUTS: LayoutPattern[] = [
   {
     count: 4,
     render: (items) => (
-      <section key={`grid-${items[0].src}`} data-section="scroll" className="mt-[10vh] grid grid-cols-2 gap-4 sm:mt-[18vh] sm:grid-cols-2 sm:gap-12">
+      <section key={`grid-${items[0].src}`} data-section="scroll" className="mt-[10vh] flex flex-col items-center gap-6 sm:mt-[18vh] sm:grid sm:grid-cols-2 sm:gap-12">
         <MemoryPhoto
           src={items[0].src}
           alt={items[0].alt ?? ''}
           caption={items[0].caption}
           rotate={-1}
-          className="w-full"
+          className="w-full max-w-sm sm:max-w-none"
         />
         <MemoryPhoto
           src={items[1].src}
           alt={items[1].alt ?? ''}
           caption={items[1].caption}
           rotate={1}
-          className="w-full sm:mt-20"
+          className="w-full max-w-sm sm:mt-20 sm:max-w-none"
         />
         <MemoryPhoto
           src={items[2].src}
           alt={items[2].alt ?? ''}
           caption={items[2].caption}
           rotate={1.5}
-          className="w-full"
+          className="w-full max-w-sm sm:max-w-none"
         />
         <MemoryPhoto
           src={items[3].src}
           alt={items[3].alt ?? ''}
           caption={items[3].caption}
           rotate={-1.5}
-          className="w-full sm:mt-20"
+          className="w-full max-w-sm sm:mt-20 sm:max-w-none"
         />
       </section>
     ),
